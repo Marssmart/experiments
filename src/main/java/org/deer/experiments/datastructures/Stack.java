@@ -34,7 +34,7 @@ public class Stack<T> {
 
     private static class Node<T> {
         private final T value;
-        private Node<T> next;
+        private final Node<T> next;
 
         private Node(T value) {
             this(value, null);
