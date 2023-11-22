@@ -2,7 +2,7 @@ package org.deer.experiments.datastructures;
 
 public class Stack<T> {
 
-    private Node<T> root;
+    protected Node<T> root;
 
     public Stack<T> push(T value) {
         if (root == null) {
@@ -32,11 +32,11 @@ public class Stack<T> {
         return size;
     }
 
-    private static class Node<T> {
+    static class Node<T> {
         private final T value;
-        private final Node<T> next;
+        Node<T> next;
 
-        private Node(T value) {
+        Node(T value) {
             this(value, null);
         }
 
