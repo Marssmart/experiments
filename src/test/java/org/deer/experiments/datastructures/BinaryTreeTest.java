@@ -16,9 +16,9 @@ class BinaryTreeTest {
     }
 
     @Test
-    void verifyInOrder() {
+    void verifyLevelOrder() {
         final var listInOrder = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         final var tree = new BinaryTree(listInOrder);
-        assertEquals(listInOrder, tree.inOrder());
+        assertEquals(listInOrder, tree.levelOrder());
     }
 }

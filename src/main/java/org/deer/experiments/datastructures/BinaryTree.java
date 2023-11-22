@@ -59,19 +59,19 @@ public class BinaryTree {
         throw new IllegalArgumentException("Value %s already in tree".formatted(value));
     }
 
-    public List<Integer> inOrder() {
+    public List<Integer> levelOrder() {
         var list = new LinkedList<Integer>();
-        inOrderRecursive(root, list);
+        levelOrderRecursive(root, list);
         return list;
     }
 
-    private void inOrderRecursive(Node node, List<Integer> collector) {
+    private void levelOrderRecursive(Node node, List<Integer> collector) {
         if (node == null) {
             return;
         }
-        inOrderRecursive(node.left, collector);
         collector.add(node.value);
-        inOrderRecursive(node.right, collector);
+        levelOrderRecursive(node.left, collector);
+        levelOrderRecursive(node.right, collector);
     }
 
     private static class Node {
