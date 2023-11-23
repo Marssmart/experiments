@@ -38,4 +38,18 @@ class BinaryTreeTest {
         assertEquals(list, tree.levelOrder());
         assertEquals(7, tree.size());
     }
+
+    @Test
+    void verifyDeepestLeftMost() {
+        final var list = List.of(4, 2, 6, 1, 3, 5, 7);
+        final var tree = new BinaryTree(list);
+        assertEquals(1, tree.findDeepestLeftMost());
+    }
+
+    @Test
+    void verifyDeepestRightMost() {
+        final var list = List.of(4, 2, 6, 1, 3, 5, 7);
+        final var tree = new BinaryTree(list);
+        assertEquals(7, tree.findDeepestRightMost());
+    }
 }
