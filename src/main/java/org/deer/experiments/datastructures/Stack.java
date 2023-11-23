@@ -32,6 +32,10 @@ public class Stack<T> {
         return size;
     }
 
+    public boolean isEmpty() {
+        return size() == 0;
+    }
+
     static class Node<T> {
         private final T value;
         Node<T> next;

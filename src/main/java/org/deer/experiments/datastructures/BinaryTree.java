@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+
 public class BinaryTree {
 
     private Node root;
@@ -25,43 +26,40 @@ public class BinaryTree {
     }
 
     public BinaryTree add(int value) {
-        if (root == null) {
-            root = new Node(value);
-        } else {
-            addRecursive(root, value);
-        }
+        root = addRecursive(root, value);
         return this;
     }
 
-    private void addRecursive(Node node, int value) {
-        if (node == null) {
-            return;
+    private Node addRecursive(Node current, int value) {
+        if (current == null) {
+            return new Node(value);
         }
 
-        if (value < node.value) {
-            if (node.left == null) {
-                node.left = new Node(value);
-            } else {
-                addRecursive(node.left, value);
-            }
-            return;
+        if (value < current.value) {
+            current.left = addRecursive(current.left, value);
+        } else if (value > current.value) {
+            current.right = addRecursive(current.right, value);
+        } else {
+            throw new IllegalArgumentException("Value %s already exists in tree".formatted(value));
         }
 
-        if (value > node.value) {
-            if (node.right == null) {
-                node.right = new Node(value);
-            } else {
-                addRecursive(node.right, value);
-            }
-            return;
-        }
-
-        throw new IllegalArgumentException("Value %s already in tree".formatted(value));
+        return current;
     }
 
     public List<Integer> levelOrder() {
         var list = new LinkedList<Integer>();
-        levelOrderRecursive(root, list);
+        Queue<Node> stack = new Queue<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            var current = stack.pop();
+            list.add(current.value);
+            if (current.left != null) {
+                stack.push(current.left);
+            }
+            if (current.right != null) {
+                stack.push(current.right);
+            }
+        }
         return list;
     }
 
@@ -81,6 +79,10 @@ public class BinaryTree {
 
         private Node(int value) {
             this.value = value;
+        }
+
+        public boolean isFull() {
+            return left != null & right != null;
         }
     }
 }
