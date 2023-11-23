@@ -63,15 +63,6 @@ public class BinaryTree {
         return list;
     }
 
-    private void levelOrderRecursive(Node node, List<Integer> collector) {
-        if (node == null) {
-            return;
-        }
-        collector.add(node.value);
-        levelOrderRecursive(node.left, collector);
-        levelOrderRecursive(node.right, collector);
-    }
-
     private static class Node {
         private final int value;
         private Node left;
