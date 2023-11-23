@@ -2,13 +2,13 @@ package org.deer.experiments.datastructures;
 
 public class Stack<T> {
 
-    protected Node<T> root;
+    protected SingleDirectionNode<T> root;
 
     public Stack<T> push(T value) {
         if (root == null) {
-            root = new Node<>(value);
+            root = new SingleDirectionNode<>(value);
         } else {
-            root = new Node<>(value, root);
+            root = new SingleDirectionNode<>(value, root);
         }
         return this;
     }
@@ -17,8 +17,8 @@ public class Stack<T> {
         if (root == null) {
             return null;
         }
-        final var value = root.value;
-        root = root.next;
+        final var value = root.getValue();
+        root = root.getNext();
         return value;
     }
 
@@ -27,7 +27,7 @@ public class Stack<T> {
         var current = root;
         while (current != null) {
             size++;
-            current = current.next;
+            current = current.getNext();
         }
         return size;
     }
@@ -36,17 +36,4 @@ public class Stack<T> {
         return size() == 0;
     }
 
-    static class Node<T> {
-        private final T value;
-        Node<T> next;
-
-        Node(T value) {
-            this(value, null);
-        }
-
-        private Node(T value, Node<T> next) {
-            this.value = value;
-            this.next = next;
-        }
-    }
 }

@@ -8,13 +8,13 @@ public class Queue<T> extends Stack<T> {
     @Override
     public Stack<T> push(T value) {
         if (root == null) {
-            root = new Node<>(value);
+            root = new SingleDirectionNode<>(value);
         } else {
             var current = root;
-            while (current.next != null) {
-                current = current.next;
+            while (current.getNext() != null) {
+                current = current.getNext();
             }
-            current.next = new Node<>(value);
+            current.setNext(new SingleDirectionNode<>(value));
         }
         return this;
     }
