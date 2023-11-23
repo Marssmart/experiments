@@ -20,6 +20,7 @@ class BinaryTreeTest {
         final var listAllRight = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         final var tree = new BinaryTree(listAllRight);
         assertEquals(listAllRight, tree.levelOrder());
+        assertEquals(10, tree.size());
     }
 
     @Test
@@ -27,6 +28,7 @@ class BinaryTreeTest {
         final var listAllLeft = List.of(10, 9, 8, 7, 6, 5, 4, 3, 2, 1);
         final var tree = new BinaryTree(listAllLeft);
         assertEquals(listAllLeft, tree.levelOrder());
+        assertEquals(10, tree.size());
     }
 
     @Test
@@ -34,5 +36,6 @@ class BinaryTreeTest {
         final var list = List.of(4, 2, 6, 1, 3, 5, 7);
         final var tree = new BinaryTree(list);
         assertEquals(list, tree.levelOrder());
+        assertEquals(7, tree.size());
     }
 }

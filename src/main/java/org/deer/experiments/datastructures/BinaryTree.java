@@ -48,19 +48,36 @@ public class BinaryTree {
 
     public List<Integer> levelOrder() {
         var list = new LinkedList<Integer>();
-        Queue<Node> stack = new Queue<>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            var current = stack.pop();
+        Queue<Node> queue = new Queue<>();
+        queue.push(root);
+        while (!queue.isEmpty()) {
+            var current = queue.pop();
             list.add(current.value);
             if (current.left != null) {
-                stack.push(current.left);
+                queue.push(current.left);
             }
             if (current.right != null) {
-                stack.push(current.right);
+                queue.push(current.right);
             }
         }
         return list;
+    }
+
+    public int size() {
+        var size = 0;
+        Queue<Node> queue = new Queue<>();
+        queue.push(root);
+        while (!queue.isEmpty()) {
+            var current = queue.pop();
+            size++;
+            if (current.left != null) {
+                queue.push(current.left);
+            }
+            if (current.right != null) {
+                queue.push(current.right);
+            }
+        }
+        return size;
     }
 
     private static class Node {
